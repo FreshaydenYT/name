@@ -1,0 +1,259 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "🔥 Script Hub | Game 🔫",
+   LoadingTitle = " Fresh Hub ",
+   LoadingSubtitle = "by 1_F0",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "script Hub"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = true, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Key | Youtube Hub",
+      Subtitle = "Key System",
+      Note = "Key In Discord Server",
+      FileName = "CAMAYDEN!!_@)!@", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"https://pastebin.com/raw/08PgjpXF"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local MainTab = Window:CreateTab("🏠 Home", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+   Title = "You executed the script",
+   Content = "Very cool gui",
+   Duration = 5,
+   Image = 13047715178,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Infinite Jump Toggle",
+   Callback = function()
+       --Toggles the infinite jump between on or off on every script run
+_G.infinjump = not _G.infinjump
+
+if _G.infinJumpStarted == nil then
+	--Ensures this only runs once to save resources
+	_G.infinJumpStarted = true
+	
+	--Notifies readiness
+	game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
+
+	--The actual infinite jump
+	local plr = game:GetService('Players').LocalPlayer
+	local m = plr:GetMouse()
+	m.KeyDown:connect(function(k)
+		if _G.infinjump then
+			if k:byte() == 32 then
+			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+			humanoid:ChangeState('Jumping')
+			wait()
+			humanoid:ChangeState('Seated')
+			end
+		end
+	end)
+end
+   end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "WalkSpeed Slider",
+   Range = {1, 350},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "sliderws", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+   end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "JumpPower Slider",
+   Range = {1, 350},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "sliderjp", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+   end,
+})
+
+local Input = MainTab:CreateInput({
+   Name = "Walkspeed",
+   PlaceholderText = "1-500",
+   RemoveTextAfterFocusLost = true,
+   Callback = function(Text)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Text)
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "fly",
+   Callback = function()
+       loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro69Yes/sussy-Script/main/SecuredFlyGuiv3.lua'))()
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "inf yeild",
+   Callback = function()
+       loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "mic up",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/script"))()
+   end,
+})
+
+local kjTab = Window:CreateTab("the strongest battlegrounds", nil) -- Title, Image
+local kjSection = kjTab:CreateSection("kj")
+
+local Button = kjTab:CreateButton({
+   Name = "phanstams hub KJ (client)",
+   Callback = function()
+       loadstring(game:HttpGet("https://scriptblox.com/raw/The-Strongest-Battlegrounds-Phantasm-TSB-Script-16254"))()
+   end,
+})
+
+local Button = kjTab:CreateButton({
+   Name = "2 KJ (client)",
+   Callback = function()
+       loadstring(game:HttpGet("https://pastefy.app/gbwEzNX4/raw"))()
+   end,
+})
+
+local Button = kjTab:CreateButton({
+   Name = "ray makk hub KJ (client)",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/JayXSama/ray-makk/main/The%20Strongest%20Battlegrounds"))()
+   end,
+})
+
+local Button = kjTab:CreateButton({
+   Name = "BATMAN hub",
+   Callback = function()
+       if getgenv().BatmanHubLoaded ~= true then
+    getgenv().BatmanHubLoaded = true
+   loadstring(game:HttpGet("https://github.com/l0ckerV5/BatmanHub/raw/main/Sources/Lite"))()
+else
+    game.StarterGui:SetCore("SendNotification",  { Title = "BatmanHub Lite"; Text = "This script is already executed!"; Icon = "rbxassetid://18792200774"; Duration = 15; })
+end
+   end,
+})
+
+local Button = kjTab:CreateButton({
+   Name = "kadehub v2",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/JayXSama/ray-makk/main/Loader"))()
+   end,
+})
+
+local rivalsTab = Window:CreateTab("rivals", nil) -- Title, Image
+local rivalsSection = rivalsTab:CreateSection("rivals")
+
+local Button = rivalsTab:CreateButton({
+   Name = "1 rivals gui",
+   Callback = function()
+       local scriptURL = 'https://raw.githubusercontent.com/Sheeshablee73/Scriptss/main/RivalsUPD2.lua'
+local response = game:HttpGet(scriptURL)
+local executeScript = loadstring(response)
+executeScript()
+   end,
+})
+
+local aimTab = Window:CreateTab("Arsenal", nil) -- Title, Imagelocal
+local aimSection = aimTab:CreateSection("aim")
+
+local Button = aimTab:CreateButton({
+   Name = "leg hub",
+   Callback = function()
+       loadstring(game:HttpGet("https://pastebin.com/raw/G6Ubkkuv"))()
+   end,
+})
+
+local Button = aimTab:CreateButton({
+   Name = "advanceTech hub",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/AdvanceFTeam/Our-Scripts/main/AdvanceTech/Arsenal_V1.6.lua"))()
+   end,
+})
+
+local aimbotTab = Window:CreateTab("dahood", nil) -- Title, Image
+local aimbotSection = aimbotTab:CreateSection("aimbot")
+
+local Button = aimbotTab:CreateButton({
+   Name = "chariotsware hub",
+   Callback = function()
+       loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Rippeed/DaHoodinary/main/chariotsware"))()
+   end,
+})
+
+local Button = aimbotTab:CreateButton({
+   Name = "azure modded",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/Actyrn/Scripts/main/AzureModded"))()
+   end,
+})
+
+local murderTab = Window:CreateTab("murder mystery 2", nil) -- Title, Image
+local murderSection = murderTab:CreateSection("murder")
+
+local Button = murderTab:CreateButton({
+   Name = "1 hub",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/s-o-a-b/nexus/main/loadstring"))()
+   end,
+})
+
+local Button = murderTab:CreateButton({
+   Name = "2 hub",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/Au0yX/Community/main/XhubMM2"))()
+   end,
+})
+
+local cussTab = Window:CreateTab("cussing", nil) -- Title, Image
+local cussSection = cussTab:CreateSection("cuss")
+
+local Button = cussTab:CreateButton({
+   Name = "1 cussing script",
+   Callback = function()
+       --[[
+
+    _    _                _____                _   _             
+    | |  | |              / ____|              | | (_)            
+    | |  | |___  ___ _ __| |     _ __ ___  __ _| |_ _  ___  _ __  
+    | |  | / __|/ _ \ '__| |    | '__/ _ \/ _` | __| |/ _ \| '_ \ 
+    | |__| \__ \  __/ |  | |____| | |  __/ (_| | |_| | (_) | | | |
+     \____/|___/\___|_|   \_____|_|  \___|\__,_|\__|_|\___/|_| |_|
+                                                                
+                         --- by @.closet ---
+                  --- https://discord.gg/usercreation ---                                                    
+--]]
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/1price/usercreation/main/UserCreation.lua", true))()
+   end,
+})
